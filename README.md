@@ -1,5 +1,7 @@
 # 🧬 Genetischer Algorithmus – eine Population statt einer einzelnen Lösung
 
+**[→ Demo live ausprobieren](https://sebastianhanisch-genetic-algorithm-demo.streamlit.app/)**
+
 Wurzelstück der **Populations-Metaheuristiken-Linie** der "Konzepte"-Reihe im Portfolio von [Sebastian Hanisch](https://sebastianhanisch.net) –
 Operations Research und Machine Learning. Anders als die Fall-Demos (ein Anwendungsfall, mehrere Verfahren im Vergleich) zeigt diese Demo **ein**
 Verfahren – den Genetischen Algorithmus (GA) – an einem wachsenden Beispiel, auf zwei Vehikeln gleichzeitig: eine **Lieferroute** (diskret,
