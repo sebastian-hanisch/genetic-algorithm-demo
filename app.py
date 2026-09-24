@@ -18,7 +18,7 @@ import streamlit as st
 import ga_algorithm as A
 import ga_constants as C
 from ga_evaluation import Settings, analyse, convergence_curves, convergence_experiment, operator_sweep, pareto_experiment, perm_instance, real_instance, sweep, verdict
-from ga_presets import apply_preset, bounds, init_session_state_defaults, load_permalink_settings, randomize_ga_seed, randomize_seed, sync_query_params
+from ga_presets import apply_preset, bounds, init_session_state_defaults, load_permalink_settings, randomize_ga_seed, randomize_seed, sync_query_params, seed_widget
 from ga_visualization import build_convergence, build_convergence_curves, build_diversity_curve, build_fitness_curve, build_landscape, build_operator_sweep, build_pareto, build_route, build_sweep
 
 st.set_page_config(page_title="Genetischer Algorithmus – Sebastian Hanisch", layout="wide")
@@ -111,9 +111,12 @@ with st.sidebar:
              "Mutation sind an die Kodierung angepasst (Order Crossover + Tausch gegen BLX-α + Gauß-Rauschen).",
     )
     if encoding == "perm":
+        seed_widget("n_slider")
         n_stops = st.slider("Stopps", *bounds("n_slider"), key="n_slider", step=C.N_STEP, help="Anzahl der Kundenstopps (das Depot kommt dazu).")
+        seed_widget("ballung_slider")
         cluster_share = st.slider("Anteil der Stopps in Gruppen [%]", *bounds("ballung_slider"), key="ballung_slider", step=C.BALLUNG_STEP,
                                    help="Wie viele Stopps in fünf Gruppen (Städten) liegen statt gleichverteilt im Gebiet.")
+        seed_widget("co2_weight_slider")
         co2_weight = st.slider("Gewicht CO2 (gewichtete Summe)", *bounds("co2_weight_slider"), key="co2_weight_slider", step=C.CO2_WEIGHT_STEP, format="%.2f",
                                 help="0 = nur Distanz zählt. >0 = Distanz und CO2-Kosten werden gewichtet addiert (jeder Straßenabschnitt hat einen eigenen, von der Distanz "
                                      "unabhängigen CO2-Faktor - manche Verbindungen sind stauanfälliger als andere). Wie gut eine feste Gewichtung die Pareto-Front trifft, zeigt das Experiment weiter unten.")
